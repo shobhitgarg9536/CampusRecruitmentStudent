@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,16 +16,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-
-public class ApplyJob extends AppCompatActivity {
+public class ViewAppliedJob extends AppCompatActivity {
 
     TextView tvCompanyName, tvabout, tvaddress, tvcity, tvcontact, tvvacancyname, tvpostname, tvnoofvacancy, tvdateofinterview,
-    tvcontactperson;
+            tvcontactperson;
     Button btapply;
 
     String jobId="";
-     String companyId="";
+    String companyId="";
     private DatabaseReference databaseJobs, databaseRegister,databaseStudent;
 
     @Override
@@ -45,7 +42,7 @@ public class ApplyJob extends AppCompatActivity {
         tvdateofinterview = findViewById(R.id.textViewjobCompanyDateOfInterview);
         tvcontactperson = findViewById(R.id.textViewjobCompanyContactPerson);
         btapply = findViewById(R.id.buttonApply);
-
+        btapply.setVisibility(View.GONE);
 
         Intent iin= getIntent();
         Bundle b = iin.getExtras();
@@ -94,22 +91,6 @@ public class ApplyJob extends AppCompatActivity {
             }
         });
 
-        btapply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!companyId.isEmpty()){
-                    String studentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    databaseStudent = FirebaseDatabase.getInstance().getReference("Students").child(studentId).child("applied");
-                   /* HashMap<String, String> p = new HashMap<>();
-                    p.put(jobId,"");*/
-                    String id = databaseStudent.push().getKey();
-                    databaseStudent.child(jobId).setValue(id);
 
-                    String id2 = databaseJobs.push().getKey();
-                    databaseJobs.child("applied student id").child(studentId).setValue(id2);
-                    btapply.setText("Applied");
-                }
-            }
-        });
     }
 }

@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -139,12 +141,18 @@ public class MainActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             //start the profile activity
                             finish();
-                            sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                            String studentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            DatabaseReference databaseStudent = FirebaseDatabase.getInstance().getReference("Students");
+                            if(!databaseStudent.child(studentId).getKey().isEmpty())
+                                startActivity(new Intent(getApplicationContext(), StudentNavbar.class));
+                            else
+                                startActivity(new Intent(getApplicationContext(), StudentDetails.class));
+                            /*sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
                             String email2 = sharedPreferences.getString("Email","");
                             if(email2.equals(email))
                                 startActivity(new Intent(getApplicationContext(), StudentNavbar.class));
                             else
-                                startActivity(new Intent(getApplicationContext(), StudentDetails.class));
+                                startActivity(new Intent(getApplicationContext(), StudentDetails.class));*/
                         }
                     }
                 });

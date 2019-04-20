@@ -11,6 +11,75 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewjobsCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Company Name" />
+
+            <TextView
+                android:id="@+id/textViewjobCompanyAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address" />
+
+            <TextView
+                android:id="@+id/textViewjobCompanyCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="City" />
+
+            <TextView
+                android:id="@+id/textView4jobCompanyAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About" />
+
+            <TextView
+                android:id="@+id/textViewjobCompanyContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contact" />
+
+            <TextView
+                android:id="@+id/textViewjobCompanyVanacyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vacancy Name" />
+
+            <TextView
+                android:id="@+id/textViewjobCompanyPostName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Post name" />
+
+            <TextView
+                android:id="@+id/textViewjobCompanyNoOfVacancy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No of Vacancy" />
+
+            <TextView
+                android:id="@+id/textViewjobCompanyDateOfInterview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date of Interview" />
+
+            <TextView
+                android:id="@+id/textViewjobCompanyContactPerson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contact Person" />
+
+            <Button
+                android:id="@+id/buttonApply"
+                android:layout_width="match_parent"
+                android:layout_height="63dp"
+                android:text="Apply"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.shobhit.campusrecruitmentstudent;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -57,11 +59,15 @@ public class Jobs  extends Fragment {
 
                 JobPostingArray jobPostingArray = new JobPostingArray(getActivity(), listJobs);
                 lvJobs.setAdapter(jobPostingArray);
+
                 lvJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String jobId = listJobs.get(position).getJobId();
                         //System.out.println(jobId);
+                        Intent i = new Intent(getContext(), ApplyJob.class);
+                        i.putExtra("jobId",jobId);
+                        startActivity(i);
                     }
                 });
 
