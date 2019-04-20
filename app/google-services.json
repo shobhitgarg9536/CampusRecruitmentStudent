@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "1055821555101",
+    "firebase_url": "https://campusrecruitmentcompany-311db.firebaseio.com",
+    "project_id": "campusrecruitmentcompany-311db",
+    "storage_bucket": "campusrecruitmentcompany-311db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055821555101:android:8eaef917df17c9f9",
+        "android_client_info": {
+          "package_name": "com.shobhit.campusrecruitment_company"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055821555101-044o75l1vh1i393pl1186rpsupuegkah.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shobhit.campusrecruitment_company",
+            "certificate_hash": "3cc6c9dc2d675252e7877d34d0d631e0ac1c40de"
+          }
+        },
+        {
+          "client_id": "1055821555101-4noofl13duiah9bqc64tp6u8hvh4n6s7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkViY-6zRTMHpzrC7GKceJenfjcS_EnjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055821555101-4noofl13duiah9bqc64tp6u8hvh4n6s7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055821555101:android:db16f444ce3c7661",
+        "android_client_info": {
+          "package_name": "com.shobhit.campusrecruitmentstudent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055821555101-4noofl13duiah9bqc64tp6u8hvh4n6s7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkViY-6zRTMHpzrC7GKceJenfjcS_EnjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055821555101-4noofl13duiah9bqc64tp6u8hvh4n6s7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
