@@ -16,8 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     String email, password;
     private ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
-    String SHARED_PREFS = "Shared_Register";
+    String SHARED_PREFS = "Shared_Register",studentId;
 
     FirebaseAuth firebaseAuth;
 
@@ -136,23 +139,35 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
+
                         //if the task is successfull
                         if(task.isSuccessful()){
                             //start the profile activity
-                            finish();
-                            String studentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                            DatabaseReference databaseStudent = FirebaseDatabase.getInstance().getReference("Students");
-                            if(!databaseStudent.child(studentId).getKey().isEmpty())
-                                startActivity(new Intent(getApplicationContext(), StudentNavbar.class));
-                            else
-                                startActivity(new Intent(getApplicationContext(), StudentDetails.class));
-                            /*sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-                            String email2 = sharedPreferences.getString("Email","");
-                            if(email2.equals(email))
-                                startActivity(new Intent(getApplicationContext(), StudentNavbar.class));
-                            else
-                                startActivity(new Intent(getApplicationContext(), StudentDetails.class));*/
+
+                             studentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            final DatabaseReference databaseStudent = FirebaseDatabase.getInstance().getReference("Students");
+
+                            databaseStudent.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    progressDialog.dismiss();
+                                    finish();
+                                    if(dataSnapshot.child(studentId).exists()){
+
+                                        startActivity(new Intent(getApplicationContext(), StudentNavbar.class));
+                                    }else{
+                                        //progressDialog.dismiss();
+                                        startActivity(new Intent(getApplicationContext(), StudentDetails.class));
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
                         }
                     }
                 });
