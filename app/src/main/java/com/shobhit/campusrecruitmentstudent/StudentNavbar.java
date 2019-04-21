@@ -102,7 +102,7 @@ public class StudentNavbar extends AppCompatActivity
         } else if (id == R.id.nav_new_application) {
             fragment = new AppliedJobs();
         }  else if (id == R.id.nav_feedback) {
-
+            fragment = new Feedback();
         }
 
         if (fragment != null) {
